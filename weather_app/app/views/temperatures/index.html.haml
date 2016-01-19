@@ -1,0 +1,41 @@
+= render :partial => 'nav'
+    
+/ /.container
+/ Page Content
+.container
+  / Jumbotron Header
+  %header.jumbotron.hero-spacer
+    %h1 Welcome To Weather APP!
+    %p Rails application that that allows to user to convert celcius to fahrenheit. The application should display the two temperatures visually.
+  
+  .row.text-center
+    %p#notice= notice
+
+  / Page Features
+  .row.text-center
+    .col-md-12
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th Title
+            %th Celcius
+            %th Fahrenheit
+            %th Description
+            %th Actions
+        %tbody
+          - @temperatures.each_with_index do |temperature,index|
+            %tr
+              %td.text-left= temperature.title
+              %td.text-left= temperature.celcius
+              %td.text-left= temperature.fahrenheit
+              %td.text-left= temperature.description
+              %td.text-left= "#{link_to 'Show', temperature} | #{link_to 'Edit', edit_temperature_path(temperature) } | #{ link_to 'Destroy', temperature, method: :delete, data: { confirm: 'Are you sure?' }}".html_safe
+  / /.row
+  
+  %hr
+  .row.text-center
+    .col-md-12.text-left=link_to 'Add New Temperature', new_temperature_path, :class =>"btn btn-default"
+  / /.row
+  
+  = render :partial => "footer"
+/ /.container

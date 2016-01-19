@@ -1,0 +1,36 @@
+= render :partial => 'nav'
+    
+/ /.container
+/ Page Content
+.container
+  / Jumbotron Header
+  %header.jumbotron.hero-spacer
+    %h1 Welcome To Bikeshop!
+    %p Site intro text goes here.., consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.
+    .row
+      .col-lg-6.col-sm-12
+        %form{:action => "/", :method => "get"}
+          .input-group
+            %input.form-control{:placeholder => "Search For Name&Style", :type => "text", :name => "search_txt"}
+              %span.input-group-btn
+                %button.btn.btn-default{:type => "submit"} Go!
+  %hr
+  
+  / Title
+  .row
+    .col-lg-12
+      %h3 Latest Models
+      = content_tag :p, "#{@bicycles.size} Result/s Found.", class: :clearfix unless params[:search_txt].blank?
+  / /.row
+  
+  / Page Features
+  .row.text-center
+    - @bicycles.each_with_index do |product,index|
+      = render :partial => "single_product", :locals => {:product => product}
+      = content_tag :div, "", class: :clearfix if (index+1)%4 == 0
+  / /.row
+  
+  %hr
+  
+  = render :partial => "footer"
+/ /.container

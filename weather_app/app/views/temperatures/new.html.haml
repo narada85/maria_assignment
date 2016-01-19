@@ -1,0 +1,27 @@
+= render :partial => 'nav'
+    
+/ /.container
+/ Page Content
+.container
+  / Jumbotron Header
+  .row.text-center
+    %h1 Add New Temperature
+  
+  .row.text-center
+    %p.text-center#notice= notice
+
+  / Page Features
+  .row.text-center
+    .col-md-12
+      = render 'form'
+  / /.row
+  
+  %hr
+  .row.text-center
+    .col-md-5
+    .col-md-2.text-left=link_to 'Back', temperatures_path, :class =>"btn btn-default"
+    .col-md-5
+  / /.row
+  
+  = render :partial => "footer"
+/ /.container

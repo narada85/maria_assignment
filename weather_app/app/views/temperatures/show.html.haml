@@ -1,0 +1,39 @@
+= render :partial => 'nav'
+    
+/ /.container
+/ Page Content
+.container
+  / Jumbotron Header
+  .row.text-center
+    %h1 Show Temperature Details
+  
+  .row.text-center
+    %p.text-center#notice= notice
+
+  / Page Features
+  .row.text-center
+    .col-md-12
+      %p
+        %strong Title
+        =@temperature.title
+      %p
+        %strong Celcius
+        =@temperature.celcius
+      %p
+        %strong Fahrenheit
+        =@temperature.fahrenheit
+      %p
+        %strong Description
+        =@temperature.description
+  / /.row
+  
+  %hr
+  .row.text-center
+    .col-md-4
+    .col-md-2.text-left=link_to 'Edit', edit_temperature_path(@temperature), :class =>"btn btn-default"
+    .col-md-2.text-left=link_to 'Back', temperatures_path, :class =>"btn btn-default"
+    .col-md-4
+  / /.row
+  
+  = render :partial => "footer"
+/ /.container
